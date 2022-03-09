@@ -35,15 +35,18 @@ class _AccessButton extends StatelessWidget {
       children: [
         const Text('Es necesario el acceso a GPS'),
         MaterialButton(
-          child: const Text('Solicitar Acceso', style: TextStyle(color: Colors.white)),
+            child: const Text('Solicitar Acceso',
+                style: TextStyle(color: Colors.white)),
             color: Colors.black,
             shape: const StadiumBorder(),
             elevation: 0,
             splashColor: Colors.transparent,
-            onPressed: (){
-            //TODO: Por hacer
+            onPressed: () {
+              final gpsBloc = BlocProvider.of<GpsBloc>(context);
+              //final gpsBloc = context.read<GpsBloc>(); //hacen lo mismo con el BlocProvider
+              gpsBloc.askGpsAccess();
             }
-        )
+         )
       ],
     );
   }
