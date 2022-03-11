@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maps_app/blocs/blocs.dart';
 import 'package:maps_app/views/views.dart';
-import 'package:maps_app/widgets/btn_follow_user.dart';
-import 'package:maps_app/widgets/btn_location.dart';
-import 'package:maps_app/widgets/btn_toggle_user_route.dart';
+import 'package:maps_app/widgets/widgets.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -63,6 +61,8 @@ class _MapScreenState extends State<MapScreen> {
                     ),
 
                     //TODO: BOTONES...
+                    const SearchBar(),
+                    const ManualMarket(),
                   ],
                 ),
               );

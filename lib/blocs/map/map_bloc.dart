@@ -43,8 +43,8 @@ class MapBloc extends Bloc<MapEvent, MapState> {
 
   void _onInitMap(OnMapInitializedEvent event, Emitter<MapState> emit) {
     _mapController = event.controller;
-    //_mapController!.setMapStyle(jsonEncode(uberMapTheme));
-    _mapController!.setMapStyle(jsonEncode(greyMapTheme));
+    _mapController!.setMapStyle(jsonEncode(uberMapTheme));
+    //_mapController!.setMapStyle(jsonEncode(greyMapTheme));
 
     emit(state.copyWith(isMapInitialized: true));
   }
