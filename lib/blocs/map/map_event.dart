@@ -11,3 +11,13 @@ class OnMapInitializedEvent extends MapEvent {
    final GoogleMapController controller;
    const OnMapInitializedEvent(this.controller);
 }
+
+class OnStopFollowinUSerEvent extends MapEvent{}
+class OnStartFollowinUSerEvent extends MapEvent{}
+
+class UpdateUserPolylineEvent extends MapEvent {
+  final List<LatLng> userLocations;
+  const UpdateUserPolylineEvent(this.userLocations);
+}
+
+class OnToggleUserRoute extends MapEvent{} //si está en true lo cambia a false, o viceversa
