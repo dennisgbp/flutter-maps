@@ -36,9 +36,9 @@ class MapView extends StatelessWidget {
           myLocationButtonEnabled: false,
           polylines: polylines,
           onMapCreated: (controller) => mapBloc.add(OnMapInitializedEvent(controller)),
+          onCameraMove: (position) => mapBloc.mapCenter = position.target,
           //TODO: Markers
-          //TODO: polylines
-          //TODO: Cuando se mueve el mapa
+
 
         ),
       ),

@@ -8,3 +8,4 @@ abstract class SearchEvent extends Equatable {
 }
 
 class OnActivateManualMarketEvent extends SearchEvent{}
+class OnDesactivateManualMarketEvent extends SearchEvent{}

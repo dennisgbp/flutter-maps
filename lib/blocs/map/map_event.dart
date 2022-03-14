@@ -21,3 +21,8 @@ class UpdateUserPolylineEvent extends MapEvent {
 }
 
 class OnToggleUserRoute extends MapEvent{} //si está en true lo cambia a false, o viceversa
+
+class DisplayPolylinesEvent extends MapEvent{
+  final Map<String, Polyline> polylines;
+  const DisplayPolylinesEvent(this.polylines);
+}
