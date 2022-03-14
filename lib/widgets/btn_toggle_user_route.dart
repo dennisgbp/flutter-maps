@@ -8,6 +8,7 @@ class BtnToggleUserRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final mapBloc = BlocProvider.of<MapBloc>(context);
 
     return Container(
@@ -16,10 +17,10 @@ class BtnToggleUserRoute extends StatelessWidget {
         backgroundColor: Colors.white,
         maxRadius: 25,
         child: IconButton(
-            icon: const Icon (Icons.more_horiz_rounded, color: Colors.black),
-            onPressed: () {
-              mapBloc.add(OnToggleUserRoute() );
-            })
+          icon: const Icon( Icons.more_horiz_rounded, color: Colors.black),
+          onPressed: () {
+            mapBloc.add( OnToggleUserRoute() );
+          })
       ),
     );
   }

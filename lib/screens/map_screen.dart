@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import 'package:maps_app/blocs/blocs.dart';
 import 'package:maps_app/views/views.dart';
+
+import 'package:maps_app/widgets/btn_toggle_user_route.dart';
 import 'package:maps_app/widgets/widgets.dart';
 
 class MapScreen extends StatefulWidget {
@@ -13,7 +16,6 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-
   late LocationBloc locationBloc;
 
   @override
@@ -21,7 +23,7 @@ class _MapScreenState extends State<MapScreen> {
     super.initState();
 
     locationBloc = BlocProvider.of<LocationBloc>(context);
-    //locationBloc.getCurrentPosition();
+    // locationBloc.getCurrentPosition();
     locationBloc.startFollowingUser();
   }
 
@@ -31,24 +33,21 @@ class _MapScreenState extends State<MapScreen> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<LocationBloc, LocationState>(
-        builder: (context, state) {
-          if (state.lastKnownLocation == null) {
+        builder: (context, locationState) {
+
+          if (locationState.lastKnownLocation == null) {
             return const Center(child: Text('Espere por favor...'));
           }
 
-          //return Center(
-          //  child: Text('${state.lastKnownLocation!.latitude}, ${state.lastKnownLocation!.longitude}'),);
-
           return BlocBuilder<MapBloc, MapState>(
-            builder: (context,mapState) {
+            builder: (context, mapState) {
 
-              Map<String, Polyline> polylines = Map.from(mapState.polylines);
-              if(!mapState.showMyRoute){
+              Map<String, Polyline> polylines = Map.from( mapState.polylines );
+              if ( !mapState.showMyRoute ) {
                 polylines.removeWhere((key, value) => key == 'myRoute');
               }
 
@@ -56,13 +55,13 @@ class _MapScreenState extends State<MapScreen> {
                 child: Stack(
                   children: [
                     MapView(
-                      initialLocation: state.lastKnownLocation!,
-                     polylines: polylines.values.toSet(),
+                      initialLocation: locationState.lastKnownLocation!,
+                      polylines: polylines.values.toSet(),
+                      markers: mapState.markers.values.toSet(),
                     ),
 
-                    //TODO: BOTONES...
                     const SearchBar(),
-                    const ManualMarket(),
+                    const ManualMarker(),
                   ],
                 ),
               );

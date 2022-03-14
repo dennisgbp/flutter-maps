@@ -19,12 +19,12 @@ class BtnFollowUser extends StatelessWidget {
 
           builder: (context, state) {
             return IconButton(
-                icon: Icon(
-                    state.isFollowinUser? Icons.directions_run_rounded : Icons.hail_rounded,
-                    color: Colors.black),
-                onPressed: () {
-                  mapBloc.add( OnStartFollowinUSerEvent() );
-                });
+                icon: Icon( 
+                  state.isFollowingUser ? Icons.directions_run_rounded : Icons.hail_rounded, 
+                  color: Colors.black),
+              onPressed: () {
+                mapBloc.add( OnStartFollowingUserEvent() );
+              });
           },
         ),
       ),

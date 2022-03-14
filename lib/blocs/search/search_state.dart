@@ -1,13 +1,31 @@
 part of 'search_bloc.dart';
 
 class SearchState extends Equatable {
-  final bool displayManualMarket;
+  
+  final bool displayManualMarker;
+  final List<Feature> places;
+  final List<Feature> history;
 
-  const SearchState({this.displayManualMarket = false});
+  const SearchState({
+    this.displayManualMarker = false,
+    this.places = const [],
+    this.history = const [],
+  });
+  
 
-  SearchState copyWith({bool? displayManualMarket}) => SearchState(
-      displayManualMarket: displayManualMarket ?? this.displayManualMarket);
+  SearchState copyWith({
+    bool? displayManualMarker,
+    List<Feature>? places,
+    List<Feature>? history
+  }) 
+  => SearchState(
+    displayManualMarker: displayManualMarker ?? this.displayManualMarker,
+    places: places ?? this.places,
+    history: history ?? this.history,
+  );
+
 
   @override
-  List<Object> get props => [displayManualMarket];
+  List<Object> get props => [ displayManualMarker, places, history ];
 }
+
